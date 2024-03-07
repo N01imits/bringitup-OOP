@@ -8,6 +8,7 @@ export class Slider {
 	slides: NodeListOf<HTMLDivElement>;
 	buttons: NodeListOf<HTMLButtonElement>;
 	slideIndex: number;
+	hanson: HTMLElement | null = null;
 
 	constructor({ pageSelector, buttonsSelector }: ISliderSelectors) {
 		this.page = document.querySelector(pageSelector);
@@ -24,11 +25,21 @@ export class Slider {
 		if (indexCurrentSlide < 1) {
 			this.slideIndex = this.slides.length;
 		}
+		if (indexCurrentSlide === 3 && this.hanson) {
+			this.hanson.classList.add('hidden');
+			setTimeout(() => {
+				this.hanson?.classList.remove('hidden');
+				this.hanson?.classList.add('animated', 'bounceInUp');
+			}, 3000);
+		} else {
+			this.hanson?.classList.remove('bounceInUp');
+		}
 
 		this.slides.forEach(slide => {
 			slide.style.display = 'none';
 		});
 		this.slides[this.slideIndex - 1].style.display = 'block';
+		this.slides[this.slideIndex - 1].classList.add('animated', 'fadeIn');
 	}
 
 	plusSlides(step: number) {
@@ -36,6 +47,7 @@ export class Slider {
 	}
 
 	render() {
+		this.hanson = document.querySelector('.hanson');
 		this.buttons.forEach(button => {
 			button.addEventListener('click', () => {
 				this.plusSlides(1);
