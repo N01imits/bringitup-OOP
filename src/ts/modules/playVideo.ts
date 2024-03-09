@@ -1,3 +1,5 @@
+const YOUTUBE_IFRAME_API_URL = 'https://www.youtube.com/iframe_api';
+
 export interface IVideoPlayer {
 	triggersSelector: string;
 	overlaySelector: string;
@@ -38,11 +40,11 @@ export class VideoPlayer {
 			}
 		});
 	}
-	createPlayer(url: string) {
+	createPlayer(videoId: string) {
 		this.player = new YT.Player('frame', {
 			height: '100%',
 			width: '100%',
-			videoId: `${url}`,
+			videoId,
 		});
 		if (this.overlay) {
 			this.overlay.style.display = 'flex';
@@ -51,7 +53,7 @@ export class VideoPlayer {
 
 	init() {
 		const scriptTag = document.createElement('script');
-		scriptTag.src = 'https://www.youtube.com/iframe_api';
+		scriptTag.src = YOUTUBE_IFRAME_API_URL;
 		document.head.appendChild(scriptTag);
 
 		this.bindTriggers();
