@@ -1,21 +1,8 @@
-interface ISliderSelectors {
-	pageSelector: string;
-	buttonsSelector: string;
-}
+import { ISliderSelectors, Slider } from './slider';
 
-export class Slider {
-	page: HTMLDivElement | null;
-	slides: NodeListOf<HTMLDivElement>;
-	buttons: NodeListOf<HTMLButtonElement>;
-	slideIndex: number;
-	hanson: HTMLElement | null = null;
-
-	constructor({ pageSelector, buttonsSelector }: ISliderSelectors) {
-		this.page = document.querySelector(pageSelector);
-		if (!this.page) throw new Error('Страница не найдена');
-		this.slides = this.page.querySelectorAll(':scope > div');
-		this.buttons = document.querySelectorAll(buttonsSelector);
-		this.slideIndex = 1;
+export class MainSlider extends Slider {
+	constructor({ containerSelector, buttonsSelector }: ISliderSelectors) {
+		super({ containerSelector, buttonsSelector });
 	}
 
 	showSlides(indexCurrentSlide: number) {
@@ -53,11 +40,14 @@ export class Slider {
 				this.plusSlides(1);
 			});
 
-			button.parentElement?.previousElementSibling?.addEventListener('click', e => {
-				e.preventDefault();
-				this.slideIndex = 1;
-				this.showSlides(this.slideIndex);
-			});
+			button.parentElement?.previousElementSibling?.addEventListener(
+				'click',
+				e => {
+					e.preventDefault();
+					this.slideIndex = 1;
+					this.showSlides(this.slideIndex);
+				},
+			);
 		});
 
 		this.showSlides(this.slideIndex);
