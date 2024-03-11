@@ -10,7 +10,7 @@ export interface ISliderSelectors {
 
 export class Slider {
 	container: HTMLDivElement | null;
-	slides: HTMLDivElement[];
+	slides: HTMLElement[];
 	buttons: NodeListOf<HTMLButtonElement> | null;
 	slideIndex: number;
 	autoPopupImage: HTMLElement | null = null;
@@ -31,9 +31,7 @@ export class Slider {
 	}: ISliderSelectors) {
 		this.container = document.querySelector(containerSelector);
 		if (!this.container) throw new Error('Контейнер не найден');
-		this.slides = Array.from(
-			this.container.querySelectorAll(':scope > *:not(button)'),
-		) as HTMLDivElement[];
+		this.slides = Array.from(this.container.querySelectorAll(':scope > *:not(button)'));
 		this.buttons = buttonsSelector ? document.querySelectorAll(buttonsSelector) : null;
 		this.nextButton = nextButtonSelector ? document.querySelector(nextButtonSelector) : null;
 		this.prevButton = prevButtonSelector ? document.querySelector(prevButtonSelector) : null;

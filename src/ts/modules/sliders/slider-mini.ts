@@ -24,19 +24,23 @@ export class MiniSlider extends Slider {
 			slide.classList.remove(this.activeClass ?? '');
 
 			if (this.animate) {
-				(slide.querySelector('.card__title') as HTMLDivElement).style.opacity = `0.4`;
-				(
-					slide.querySelector('.card__controls-arrow') as HTMLDivElement
-				).style.opacity = `0`;
+				const cardTitle = slide.querySelector('.card__title');
+				const cardControlsArrow = slide.querySelector('.card__controls-arrow');
+				if (cardTitle instanceof HTMLDivElement) cardTitle.style.opacity = `0.4`;
+				if (cardControlsArrow instanceof HTMLDivElement)
+					cardControlsArrow.style.opacity = `0`;
 			}
 		});
 
 		this.slides[0].classList.add(this.activeClass ?? '');
 		if (this.animate) {
-			(this.slides[0].querySelector('.card__title') as HTMLDivElement).style.opacity = `1`;
-			(
-				this.slides[0].querySelector('.card__controls-arrow') as HTMLDivElement
-			).style.opacity = `1`;
+			const firstSlideCardTitle = this.slides[0].querySelector('.card__title');
+			const firstSlideCardControlsArrow =
+				this.slides[0].querySelector('.card__controls-arrow');
+			if (firstSlideCardTitle instanceof HTMLDivElement)
+				firstSlideCardTitle.style.opacity = `1`;
+			if (firstSlideCardControlsArrow instanceof HTMLDivElement)
+				firstSlideCardControlsArrow.style.opacity = `1`;
 		}
 	}
 	nextSlide() {
