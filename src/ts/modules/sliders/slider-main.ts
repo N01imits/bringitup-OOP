@@ -12,14 +12,14 @@ export class MainSlider extends Slider {
 		if (indexCurrentSlide < 1) {
 			this.slideIndex = this.slides.length;
 		}
-		if (indexCurrentSlide === 3 && this.hanson) {
-			this.hanson.classList.add('hidden');
+		if (indexCurrentSlide === 3 && this.autoPopupImage) {
+			this.autoPopupImage.classList.add('hidden');
 			setTimeout(() => {
-				this.hanson?.classList.remove('hidden');
-				this.hanson?.classList.add('animated', 'bounceInUp');
+				this.autoPopupImage?.classList.remove('hidden');
+				this.autoPopupImage?.classList.add('animated', 'bounceInUp');
 			}, 3000);
 		} else {
-			this.hanson?.classList.remove('bounceInUp');
+			this.autoPopupImage?.classList.remove('bounceInUp');
 		}
 
 		this.slides.forEach(slide => {
@@ -33,21 +33,18 @@ export class MainSlider extends Slider {
 		this.showSlides((this.slideIndex += step));
 	}
 
-	render() {
-		this.hanson = document.querySelector('.hanson');
-		this.buttons.forEach(button => {
+	init() {
+		this.autoPopupImage = document.querySelector('.hanson');
+		this.buttons?.forEach(button => {
 			button.addEventListener('click', () => {
 				this.plusSlides(1);
 			});
 
-			button.parentElement?.previousElementSibling?.addEventListener(
-				'click',
-				e => {
-					e.preventDefault();
-					this.slideIndex = 1;
-					this.showSlides(this.slideIndex);
-				},
-			);
+			button.parentElement?.previousElementSibling?.addEventListener('click', e => {
+				e.preventDefault();
+				this.slideIndex = 1;
+				this.showSlides(this.slideIndex);
+			});
 		});
 
 		this.showSlides(this.slideIndex);

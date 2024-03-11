@@ -1,15 +1,42 @@
-import { MainSlider, VideoPlayer } from './modules';
+import { MainSlider, VideoPlayer, MiniSlider } from './modules';
 
 document.addEventListener('DOMContentLoaded', () => {
-	const slider = new MainSlider({
+	const mainSlider = new MainSlider({
 		containerSelector: '.page',
 		buttonsSelector: '.next',
 	});
-	slider.render();
+	mainSlider.init();
 
-	const player = new VideoPlayer({
+	const showUpSlider = new MiniSlider({
+		containerSelector: '.showup__content-slider',
+		nextButtonSelector: '.showup__next',
+		prevButtonSelector: '.showup__prev',
+		activeClass: 'card-active',
+		animate: true,
+	});
+	showUpSlider.init();
+
+	const modulesSlider = new MiniSlider({
+		containerSelector: '.modules__content-slider',
+		nextButtonSelector: '.modules__info-btns .slick-next',
+		prevButtonSelector: '.modules__info-btns .slick-prev',
+		activeClass: 'card-active',
+		animate: true,
+		autoPlay: true,
+	});
+	modulesSlider.init();
+
+	const feedSlider = new MiniSlider({
+		containerSelector: '.feed__slider',
+		nextButtonSelector: '.feed__slider .slick-next',
+		prevButtonSelector: '.feed__slider .slick-prev',
+		activeClass: 'feed__item-active',
+	});
+	feedSlider.init();
+
+	const videoPlayer = new VideoPlayer({
 		triggersSelector: '.showup .play',
 		overlaySelector: '.overlay',
 	});
-	player.init();
+	videoPlayer.init();
 });
