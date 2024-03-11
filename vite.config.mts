@@ -10,9 +10,8 @@ export default defineConfig({
 	build: {
 		rollupOptions: {
 			input: {
-				main: '/index.html',
-				modules: '/modules.html',
-				// Добавьте дополнительные точки входа здесь
+				main: './index.html',
+				modules: './modules.html',
 			},
 		},
 	},
