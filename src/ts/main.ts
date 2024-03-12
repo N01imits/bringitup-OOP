@@ -1,4 +1,4 @@
-import { MainSlider, VideoPlayer, MiniSlider } from './modules';
+import { MainSlider, VideoPlayer, MiniSlider, CardDisplayManager } from './modules';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const mainSlider = new MainSlider({
@@ -39,4 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		overlaySelector: '.overlay',
 	});
 	videoPlayer.init();
+
+	const oldOfficer = new CardDisplayManager({
+		containerSelector: '.officerold',
+		cardsSelector: '.officer__card-item',
+	});
+	oldOfficer.init();
+
+	const newOfficer = new CardDisplayManager({
+		containerSelector: '.officernew',
+		cardsSelector: '.officer__card-item',
+	});
+	newOfficer.init();
 });
+history;
