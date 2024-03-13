@@ -34,6 +34,9 @@ export class Forms {
 	}
 
 	initMask() {
+		const nonDigitsRegexp = /\D/g;
+		const maskSymbolRegexp = /[_\d]/;
+
 		const setCursorPosition = (position: number, element: HTMLInputElement): void => {
 			element.focus();
 			if (element.setSelectionRange) {
@@ -46,16 +49,16 @@ export class Forms {
 
 			const input = event.target;
 			const matrix: string = '+1 (___) ___-____';
-			const def: string = matrix.replace(/\D/g, '');
+			const def: string = matrix.replace(nonDigitsRegexp, '');
 			let i: number = 0;
-			let value: string = input.value.replace(/\D/g, '');
+			let value: string = input.value.replace(nonDigitsRegexp, '');
 
 			if (def.length >= value.length) {
 				value = def;
 			}
 
 			input.value = matrix.replace(/./g, (symbol: string): string => {
-				const test = /[_\d]/.test(symbol) && i < value.length;
+				const test = maskSymbolRegexp.test(symbol) && i < value.length;
 
 				return test ? value.charAt(i++) : i >= value.length ? '' : symbol;
 			});
