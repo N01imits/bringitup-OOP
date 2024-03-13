@@ -1,12 +1,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			'@imports': '/src/ts/modules',
-			'@styles': '/src/assets/css',
-		},
-	},
 	build: {
 		rollupOptions: {
 			input: {
