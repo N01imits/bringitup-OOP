@@ -1,4 +1,4 @@
-import { MainSlider, VideoPlayer, MiniSlider, CardDisplayManager } from './modules';
+import { MainSlider, VideoPlayer, MiniSlider, CardDisplayManager, Forms } from './modules';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const mainSlider = new MainSlider({
@@ -51,5 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		cardsSelector: '.officer__card-item',
 	});
 	newOfficer.init();
+
+	const forms = new Forms('.form');
+	forms.init();
 });
-history;
