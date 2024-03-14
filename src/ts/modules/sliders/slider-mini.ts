@@ -62,9 +62,12 @@ export class MiniSlider extends Slider {
 	}
 
 	bindTriggers() {
-		this.nextButton?.addEventListener('click', () => this.nextSlide());
-
-		this.prevButton?.addEventListener('click', () => this.prevSlide());
+		this.nextButtons?.forEach(button =>
+			button.addEventListener('click', () => this.nextSlide()),
+		);
+		this.prevButtons?.forEach(button =>
+			button.addEventListener('click', () => this.prevSlide()),
+		);
 	}
 
 	init() {
