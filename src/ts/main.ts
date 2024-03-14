@@ -54,4 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const forms = new Forms('.form');
 	forms.init();
+
+	const secondPageMainSlider = new MainSlider({
+		containerSelector: '.moduleapp',
+		buttonsSelector: '.next',
+		nextButtonSelector: '.nextmodule',
+		prevButtonSelector: '.prevmodule',
+	});
+	secondPageMainSlider.init();
 });

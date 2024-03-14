@@ -14,8 +14,8 @@ export class Slider {
 	buttons: NodeListOf<HTMLButtonElement> | null = null;
 	slideIndex: number = 1;
 	autoPopupImage: HTMLElement | null = null;
-	nextButton: HTMLButtonElement | null = null;
-	prevButton: HTMLButtonElement | null = null;
+	nextButtons: NodeListOf<HTMLButtonElement> | null = null;
+	prevButtons: NodeListOf<HTMLButtonElement> | null = null;
 	activeClass: string | null = null;
 	animate: boolean = false;
 	autoPlay: boolean = false;
@@ -35,8 +35,8 @@ export class Slider {
 		}
 		this.slides = Array.from(this.container.querySelectorAll(':scope > *:not(button)'));
 		this.buttons = buttonsSelector ? document.querySelectorAll(buttonsSelector) : null;
-		this.nextButton = nextButtonSelector ? document.querySelector(nextButtonSelector) : null;
-		this.prevButton = prevButtonSelector ? document.querySelector(prevButtonSelector) : null;
+		this.nextButtons = nextButtonSelector ? document.querySelectorAll(nextButtonSelector) : null;
+		this.prevButtons = prevButtonSelector ? document.querySelectorAll(prevButtonSelector) : null;
 		this.activeClass = activeClass ? activeClass : null;
 		this.animate = animate;
 		this.autoPlay = autoPlay;

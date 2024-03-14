@@ -1,8 +1,18 @@
 import { ISliderSelectors, Slider } from './slider';
 
 export class MainSlider extends Slider {
-	constructor({ containerSelector, buttonsSelector }: ISliderSelectors) {
-		super({ containerSelector, buttonsSelector });
+	constructor({
+		containerSelector,
+		buttonsSelector,
+		nextButtonSelector,
+		prevButtonSelector,
+	}: ISliderSelectors) {
+		super({
+			containerSelector,
+			buttonsSelector,
+			nextButtonSelector,
+			prevButtonSelector,
+		});
 	}
 
 	showSlides(indexCurrentSlide: number) {
@@ -36,8 +46,7 @@ export class MainSlider extends Slider {
 		this.showSlides((this.slideIndex += step));
 	}
 
-	init() {
-		this.autoPopupImage = document.querySelector('.hanson');
+	bindTriggers() {
 		this.buttons?.forEach(button => {
 			button.addEventListener('click', () => {
 				this.plusSlides(1);
@@ -50,6 +59,27 @@ export class MainSlider extends Slider {
 			});
 		});
 
+		this.nextButtons?.forEach(button => {
+			button.addEventListener('click', e => {
+				e.stopPropagation();
+				e.preventDefault();
+				this.plusSlides(1);
+			});
+		});
+
+		this.prevButtons?.forEach(button => {
+			button.addEventListener('click', e => {
+				e.stopPropagation();
+				e.preventDefault();
+				this.plusSlides(-1);
+			});
+		});
+	}
+
+	init() {
+		this.autoPopupImage = document.querySelector('.hanson');
+
 		this.showSlides(this.slideIndex);
+		this.bindTriggers();
 	}
 }
