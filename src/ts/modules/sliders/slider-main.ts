@@ -25,6 +25,9 @@ export class MainSlider extends Slider {
 		this.slides.forEach(slide => {
 			slide.style.display = 'none';
 		});
+		if (!this.slides[this.slideIndex - 1]) {
+			return;
+		}
 		this.slides[this.slideIndex - 1].style.display = 'block';
 		this.slides[this.slideIndex - 1].classList.add('animated', 'fadeIn');
 	}

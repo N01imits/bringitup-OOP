@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 	modulesSlider.init();
 
-	const feedSlider = new MiniSlider({
+	const mainPageFeedSlider = new MiniSlider({
 		containerSelector: '.feed__slider',
 		nextButtonSelector: '.feed__slider .slick-next',
 		prevButtonSelector: '.feed__slider .slick-prev',
 		activeClass: 'feed__item-active',
 	});
-	feedSlider.init();
+	mainPageFeedSlider.init();
 
 	const videoPlayer = new VideoPlayer({
 		triggersSelector: '.showup .play',

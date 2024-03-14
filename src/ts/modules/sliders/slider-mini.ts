@@ -20,6 +20,9 @@ export class MiniSlider extends Slider {
 	}
 
 	decorizeSlides() {
+		if (this.slides.length === 0) {
+			return;
+		}
 		this.slides.forEach(slide => {
 			slide.classList.remove(this.activeClass ?? '');
 

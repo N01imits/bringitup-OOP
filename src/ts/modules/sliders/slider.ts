@@ -9,16 +9,16 @@ export interface ISliderSelectors {
 }
 
 export class Slider {
-	container: HTMLDivElement | null;
-	slides: HTMLElement[];
-	buttons: NodeListOf<HTMLButtonElement> | null;
-	slideIndex: number;
+	container: HTMLDivElement | null = null;
+	slides: HTMLElement[] = [];
+	buttons: NodeListOf<HTMLButtonElement> | null = null;
+	slideIndex: number = 1;
 	autoPopupImage: HTMLElement | null = null;
 	nextButton: HTMLButtonElement | null = null;
 	prevButton: HTMLButtonElement | null = null;
 	activeClass: string | null = null;
-	animate: boolean;
-	autoPlay: boolean;
+	animate: boolean = false;
+	autoPlay: boolean = false;
 
 	constructor({
 		containerSelector,
@@ -30,7 +30,9 @@ export class Slider {
 		autoPlay = false,
 	}: ISliderSelectors) {
 		this.container = document.querySelector(containerSelector);
-		if (!this.container) throw new Error('Контейнер не найден');
+		if (!this.container) {
+			return;
+		}
 		this.slides = Array.from(this.container.querySelectorAll(':scope > *:not(button)'));
 		this.buttons = buttonsSelector ? document.querySelectorAll(buttonsSelector) : null;
 		this.nextButton = nextButtonSelector ? document.querySelector(nextButtonSelector) : null;
@@ -38,6 +40,5 @@ export class Slider {
 		this.activeClass = activeClass ? activeClass : null;
 		this.animate = animate;
 		this.autoPlay = autoPlay;
-		this.slideIndex = 1;
 	}
 }
