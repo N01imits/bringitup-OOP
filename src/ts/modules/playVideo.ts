@@ -89,7 +89,7 @@ export class VideoPlayer {
 			}
 			blockedElement.style.opacity = '1';
 			blockedElement.style.filter = 'none';
-			blockedElement.setAttribute('data-disabled', 'false');
+			blockedElement.dataset['disabled'] = 'false';
 		}
 	};
 	init() {
