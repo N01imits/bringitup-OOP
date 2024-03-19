@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 	videoPlayer.init();
 
+	const videoPlayerSecondPage = new VideoPlayer({
+		triggersSelector: '.module__video-item .play',
+		overlaySelector: '.overlay',
+	});
+	videoPlayerSecondPage.init();
+
 	const oldOfficer = new CardDisplayManager({
 		containerSelector: '.officerold',
 		cardsSelector: '.officer__card-item',
