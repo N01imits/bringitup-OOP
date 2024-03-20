@@ -1,4 +1,11 @@
-import { MainSlider, VideoPlayer, MiniSlider, CardDisplayManager, Forms } from './modules';
+import {
+	MainSlider,
+	VideoPlayer,
+	MiniSlider,
+	CardDisplayManager,
+	Forms,
+	ShowInfo,
+} from './modules';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const mainSlider = new MainSlider({
@@ -68,4 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		prevButtonSelector: '.prevmodule',
 	});
 	secondPageMainSlider.init();
+
+	new ShowInfo('.plus__content').init();
 });
