@@ -5,3 +5,4 @@ export { MiniSlider } from './sliders/slider-mini';
 export { CardDisplayManager } from './difference';
 export { Forms } from './forms';
 export { Download } from './download';
+export { ShowInfo } from './showinfo';

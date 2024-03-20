@@ -5,6 +5,7 @@ import {
 	CardDisplayManager,
 	Forms,
 	Download,
+	ShowInfo,
 } from './modules';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,4 +78,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	secondPageMainSlider.init();
 
 	new Download('.download').init();
+	new ShowInfo('.plus__content').init();
 });
